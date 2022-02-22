@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:600|Work+Sans:400,500,600,700&display=swap');
+
+body{
+  background: rgb(34,193,195);
+  background: linear-gradient(135deg, rgba(34,193,195,1) 0%, rgb(253 218 45) 100%);
+  font-family: "work sans";
+  color: black;
+}
+
+html{
+  font-size: 100%;
+}
+
+main {
+  min-height: 80vh;
+}
+
+h3 {
+  padding: 1rem 0;
+}
+
+h1 {
+  font-size: 1.8rem;
+  padding: 1rem 0;
+}
+
+h2 {
+  font-size: 1.4rem;
+  padding: 0.5rem 0;
+}
+
+.rating span {
+  margin: 0.1rem;
+}
+
+.during-popup{
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+}
+.Regshow{
+  display:block;
+}
+.regModal{
+  position: 'fixed';
+  left: '25%';
+  top: '30%';
+  width: '50%';
+  border: '1px solid #011627';
+  border-radius: '1em';
+  box-shadow: '-2px 5px 5px #E71D36';
+
+  background-color: '#FDFFFC';
+
+  display: 'flex';
+  flex-direction: 'column';
+  justify-content: 'space-between';
+  align-items: 'center';
+
+  color: '#011627';
+  z-index: 1000000;
+}
+.false{
+  display:'none';
+}
+/* carousel */
+.carousel{
+  margin:auto;
+  width:100%;
+}
+.carousel-item-next,
+.carousel-item-prev,
+.carousel-item.active {
+  display: flex;
+}
+.carousel-caption {
+  position: absolute;
+  top: 0;
+}
+
+.carousel-caption h2 {
+  color: #fff;
+}
+
+.carousel img {
+  height: 300px;
+  padding: 30px;
+  margin: 40px;
+  border-radius: 50%;
+}
+.carousel a {
+  margin: 0 auto;
+}
+
+.container-width {
+  width: 100%;
+}
+
+.product-card:hover {
+  transform: translateX(0px) translateY(10px);
+  background:rgba(232, 249, 254, 0.7)
+}
+
+.product-card {
+  transition: transform 300ms ease-in-out 25ms;
+}
+
+@media screen and (min-width:768px) {
+  .container-width{
+    width: 85%;
+  }
+  .cart-start{
+    margin: 100px 0px 25px 0px;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .carousel-caption {
+    display: none;
+  }
+  .carousel img {
+    height: 300px;
+    padding: 40px;
+    border-radius: 50%;
+    margin:0px;
+  }
+}
+
+@media screen and (max-width:368px) {
+  .navbar-brand{
+    font-size: 15px;
+    margin-right: 10px;
+  }
+}
+
+
+.list-group-item{
+  background-color: transparent;
+}
+.form-control{
+  background-color: '#ebebf1';
+}
+.row{
+  align-items: center;
+}
+.card{
+  background-color: transparent; 
+}
+
+.dropdown-item.active{
+  background:rgba(174, 231, 249, 0.7);
+  color: black;
+}
+
+.nav-item{
+  margin:0;
+}
