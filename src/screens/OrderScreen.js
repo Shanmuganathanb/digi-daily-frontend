@@ -95,12 +95,12 @@ const OrderScreen = ({ match, history }) => {
 		// )
 
 		const options = {
-			key: __DEV__ ? 'rzp_test_Xn7IDosRi4weLM' : 'PRODUCTION_KEY',
+			key: process.env.REACT_APP_NODE_ENV!='production' ? 'rzp_test_Xn7IDosRi4weLM' : process.env.REACT_APP_RAZORPAY_KEY_ID,
 			currency: data.currency,
 			amount: data.amount.toString(),
 			order_id: data.id,
 			name: 'Donation',
-			description: 'Thank you for nothing. Please give us some money',
+			description: 'Thanks for shopping with us',
 			// image: 'http://localhost:1337/logo.svg',
       handler: function (response) {
         Swal.fire({
@@ -161,8 +161,12 @@ const OrderScreen = ({ match, history }) => {
   ) : error ? (
     <Message variant='danger'>{error}</Message>
   ) : (
-    <>
-      <h1>Order {order._id}</h1>
+        <>
+          <div style={{display:'flex', flexDirection:'row', flexWrap:'wrap', alignItems: 'baseline', wordBreak: 'break-all'}}>
+            <h1>Order id : </h1>
+            <span style={{ textTransform: 'lowercase', fontSize: '20px', padding: '0.1rem 0', marginLeft: '5px', marginBottom: '0.4rem' }}> {order._id}</span>
+            {/* <h5> {order._id}</h5> */}
+          </div>
       <Row>
         <Col md={8}>
           <ListGroup variant='flush'>
@@ -242,7 +246,7 @@ const OrderScreen = ({ match, history }) => {
                           </Link>
                         </Col>
                         <Col md={4}>
-                          {item.qty} x ₹{item.price} = ₹{item.qty * item.price}
+                          {item.qty} x ₹{item.price} = ₹{(item.qty * item.price).toFixed(2)}
                         </Col>
                       </Row>
                     </ListGroup.Item>

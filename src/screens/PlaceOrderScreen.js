@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import CheckoutSteps from '../components/CheckoutSteps'
 import { createOrder } from '../actions/orderActions'
+import { removeAllFromCart } from '../actions/cartActions'
 
 const PlaceOrderScreen = ({ history }) => {
   const dispatch = useDispatch()
@@ -21,7 +22,7 @@ const PlaceOrderScreen = ({ history }) => {
   cart.itemsPrice = addDecimals(
     cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
   )
-  cart.shippingPrice = addDecimals(cart.itemsPrice > 100 ? 50 : 100)
+  cart.shippingPrice = addDecimals(cart.itemsPrice > 100 ? 50 : 1)
   cart.taxPrice = addDecimals(Number((0.15 * cart.itemsPrice).toFixed(2)))
   cart.totalPrice = (
     Number(cart.itemsPrice) +
@@ -34,7 +35,8 @@ const PlaceOrderScreen = ({ history }) => {
 
   useEffect(() => {
     if (success && orderCreated) {
-      history.push(`/order/${order._id}`)
+      history.push(`/order/${order._id}`);
+      dispatch(removeAllFromCart());
     }
     // eslint-disable-next-line
   }, [history, success, orderCreated])

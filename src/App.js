@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -17,10 +17,16 @@ import UserEditScreen from './screens/UserEditScreen'
 import ProductListScreen from './screens/ProductListScreen'
 import ProductEditScreen from './screens/ProductEditScreen'
 import OrderListScreen from './screens/OrderListScreen'
+import ShippingPolicyScreen from './screens/ShippingPolicyScreen'
+import ReturnRefundPolicyScreen from './screens/ReturnRefundPolicyScreen'
+import CancellationPolicyScreen from './screens/CancellationPolicyScreen'
+import TermsConditionsScreen from './screens/TermsConditionsScreen'
+import ScrollToTop from './scrollToTop'
 
 const App = () => {
   return (
     <Router>
+      <ScrollToTop />
       <Header />
       <main className='py-3'>
         <Container fluid className='container-width'>
@@ -53,6 +59,10 @@ const App = () => {
             component={HomeScreen}
             exact
           />
+          <Route path='/shipping-policy' component={ShippingPolicyScreen} exact />
+          <Route path='/return-refund-policy' component={ReturnRefundPolicyScreen} exact />
+          <Route path='/cancellation-policy' component={CancellationPolicyScreen} exact />
+          <Route path='/terms-and-conditions' component={TermsConditionsScreen} exact />
           <Route path='/' component={HomeScreen} exact />
         </Container>
       </main>

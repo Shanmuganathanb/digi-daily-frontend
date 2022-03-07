@@ -53,8 +53,65 @@ const ProfileScreen = ({ location, history }) => {
 
   return (
     <Row style={{ marginTop: '15px'}}>
+      <Col md={9}>
+        <h2>My Orders</h2>
+        {loadingOrders ? (
+          <Loader />
+        ) : errorOrders ? (
+          <Message variant='danger'>{errorOrders}</Message>
+        ) : ( <Table striped bordered hover responsive className='table-sm'>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>DATE</th>
+                <th>TOTAL</th>
+                <th>PAID</th>
+                <th>DISPATCHED</th>
+                <th>DELIVERED</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+                {orders.length > 0 ? orders.map((order) => (
+                  <tr key={order._id}>
+                    <td>{order._id}</td>
+                    <td>{order.createdAt ? order.createdAt.slice(0, 10) : ''}</td>
+                    <td>{order.totalPrice}</td>
+                    <td>
+                      {order.isPaid ? (
+                        order.paidAt ? order.paidAt.slice(0, 10) : ''
+                      ) : (
+                        <i className='fas fa-times' style={{ color: 'red' }}></i>
+                      )}
+                    </td>
+                    <td>
+                      {order.isDispatched ? (
+                        order.dispatchedAt ? order.dispatchedAt.slice(0, 10) : ''
+                      ) : (
+                        <i className='fas fa-times' style={{ color: 'red' }}></i>
+                      )}
+                    </td>
+                    <td>
+                      {order.isDelivered ? (
+                        order.deliveredAt ? order.deliveredAt.slice(0, 10) : ''
+                      ) : (
+                        <i className='fas fa-times' style={{ color: 'red' }}></i>
+                      )}
+                    </td>
+                    <td>
+                      <LinkContainer to={`/order/${order._id}`}>
+                        <Button className='btn-sm rounded' variant='light'>
+                          Details
+                        </Button>
+                      </LinkContainer>
+                    </td>
+                  </tr>
+                )) : <h4 style={{ textAlign: 'center', textTransform: 'capitalize' }}>No Order Yet</h4>}
+            </tbody>
+          </Table>) }
+      </Col>
       <Col md={3}>
-        <h2>User Profile</h2>
+        <h2 style={{ marginTop: '10px'}}>User Profile</h2>
         {message && <Message variant='danger'>{message}</Message>}
         {error && <Message variant='danger'>{error}</Message>}
         {success && <Message variant='success'>Profile Updated</Message>}
@@ -108,65 +165,6 @@ const ProfileScreen = ({ location, history }) => {
             Update
           </Button>
         </Form>
-      </Col>
-      <Col md={9}>
-        <h2>My Orders</h2>
-        {loadingOrders ? (
-          <Loader />
-        ) : errorOrders ? (
-          <Message variant='danger'>{errorOrders}</Message>
-        ) : (
-          <Table striped bordered hover responsive className='table-sm'>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>DATE</th>
-                <th>TOTAL</th>
-                <th>PAID</th>
-                <th>DISPATCHED</th>
-                <th>DELIVERED</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {orders.map((order) => (
-                <tr key={order._id}>
-                  <td>{order._id}</td>
-                  <td>{order.createdAt ? order.createdAt.slice(0, 10) : ''}</td>
-                  <td>{order.totalPrice}</td>
-                  <td>
-                    {order.isPaid ? (
-                      order.paidAt ? order.paidAt.slice(0, 10) : ''
-                    ) : (
-                      <i className='fas fa-times' style={{ color: 'red' }}></i>
-                    )}
-                  </td>
-                  <td>
-                    {order.isDispatched ? (
-                      order.dispatchedAt ? order.dispatchedAt.slice(0, 10) : ''
-                    ) : (
-                      <i className='fas fa-times' style={{ color: 'red' }}></i>
-                    )}
-                  </td>
-                  <td>
-                    {order.isDelivered ? (
-                      order.deliveredAt ? order.deliveredAt.slice(0, 10) : ''
-                    ) : (
-                      <i className='fas fa-times' style={{ color: 'red' }}></i>
-                    )}
-                  </td>
-                  <td>
-                    <LinkContainer to={`/order/${order._id}`}>
-                      <Button className='btn-sm rounded' variant='light'>
-                        Details
-                      </Button>
-                    </LinkContainer>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        )}
       </Col>
     </Row>
   )
