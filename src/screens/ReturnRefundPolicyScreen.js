@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 
 const ReturnRefundPolicyScreen = ({ history, match }) => {
+    const pageNumber = match.params.id || 1;
     return (
         <div className="text-justify d-flex flex-column w-100 mt-4">
             <h3 className='text-center'>Refund and Returns Policy</h3>

@@ -99,9 +99,9 @@ const OrderScreen = ({ match, history }) => {
 			currency: data.currency,
 			amount: data.amount.toString(),
 			order_id: data.id,
-			name: 'Donation',
+			name: 'Digital Daily',
 			description: 'Thanks for shopping with us',
-			// image: 'http://localhost:1337/logo.svg',
+			image: 'http://localhost:3000/images/Logo.png',
       handler: function (response) {
         Swal.fire({
           title: 'Payment ID & Order ID',

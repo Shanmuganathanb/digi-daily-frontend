@@ -26,7 +26,7 @@ const Header = () => {
       <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect style={{margin: 0, padding: '0px 10px'}}>
         <Container fluid className='container-width'>
           <LinkContainer to='/'>
-            <Navbar.Brand><img className='img-fluid'  style={{width: '180px', height: '120px'}} src='/images/logo_website_logo.png'/></Navbar.Brand>
+            <Navbar.Brand><img className='img-fluid'  style={{width: '160px', height: '90px'}} src='/images/000.png'/></Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav' style={{ fontSize:'13px'}}>

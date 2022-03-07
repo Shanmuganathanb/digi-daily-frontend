@@ -35,7 +35,7 @@ const Footer = () => {
                 Shipping Policy
               </Nav.Link>
             </LinkContainer>
-            <LinkContainer to='return-refund-policy' className='h5' style={{color:'#d5d3d3'}}>
+            <LinkContainer to='/return-refund-policy' className='h5' style={{color:'#d5d3d3'}}>
               <Nav.Link>
                 Return and Refund Policy
               </Nav.Link>
