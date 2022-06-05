@@ -58,7 +58,7 @@ const HomeScreen = ({ match }) => {
 
   useEffect(() => {
     (async () => {
-      const categoryResponse = await axios.get('http://localhost:5000/api/products/category-list');
+      const categoryResponse = await axios.get(`${process.env.REACT_APP_NODE_ENV==='production' ? process.env.REACT_APP_BACKEND_HOST : 'http://localhost:5000'}/api/products/category-list`);
       setCategories(['All', ...categoryResponse.data]);
     })();
   }, []);
