@@ -23,14 +23,14 @@ import {
   PRODUCT_TOP_FAIL,
 } from '../constants/productConstants'
 
-export const listProducts = (keyword = '', pageNumber = '') => async (
+export const listProducts = (keyword = '', pageNumber = '', category = '', limit = '') => async (
   dispatch
 ) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST })
 
     const { data } = await axios.get(
-      `${process.env.REACT_APP_NODE_ENV==='production' ? process.env.REACT_APP_BACKEND_HOST : 'http://localhost:5000'}/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
+      `${process.env.REACT_APP_NODE_ENV==='production' ? process.env.REACT_APP_BACKEND_HOST : 'http://localhost:5000'}/api/products?keyword=${keyword}&pageNumber=${pageNumber}&limit=${limit}&category=${category}`
     )
 
     dispatch({

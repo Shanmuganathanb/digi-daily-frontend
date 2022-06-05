@@ -95,7 +95,7 @@ const OrderScreen = ({ match, history }) => {
 		// )
 
 		const options = {
-			key: process.env.REACT_APP_NODE_ENV!='production' ? 'rzp_test_Xn7IDosRi4weLM' : process.env.REACT_APP_RAZORPAY_KEY_ID,
+			key: process.env.REACT_APP_NODE_ENV!='production' ? 'rzp_test_d2bbTNlWU3Y4GK' : process.env.REACT_APP_RAZORPAY_KEY_ID,
 			currency: data.currency,
 			amount: data.amount.toString(),
 			order_id: data.id,
